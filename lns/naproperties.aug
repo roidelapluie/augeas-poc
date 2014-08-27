@@ -26,7 +26,8 @@ module NaProperties =
   let indent           = Util.indent
   let backslash        = del /[\\][ \t]*\n/ "\\\n"
   let opt_backslash    = del /([\\][ \t]*\n)?/ ""
-  let entry            = /([^ \t\n:=\/!#\\]|[\\]:|[\\]=|[\\][\t ]|[\\][^\/\n])+/
+  let database_entry            = /([^ \t\n:=\/!#\\]|[\\]:|[\\]=|[\\][\t ]|[\\][^\/\n])+\.database\.url/
+  let entry            = /([^ \t\n:=\/!#\\]|[\\]:|[\\]=|[\\][\t ]|[\\][^\/\n])+/ - database_entry
 
   let multi_line_entry =
       [ indent . value_to_bs? . backslash ] .

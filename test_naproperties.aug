@@ -28,6 +28,7 @@ short.break = a\
 
 cheeses
 
+test.database.url=jdbc:mysql//127.0.0.1:3325/schema?options
 
 spaces only
 multi  spaces
@@ -86,7 +87,7 @@ test lns get conf =
     {}
     { "cheeses" }
     {}
-
+    { "test.database.url" = "jdbc:mysql//127.0.0.1:3325/schema?options" }
     {}
     { "spaces" = "only" }
     { "multi" = "spaces" }
@@ -134,6 +135,7 @@ short.break = a\
 
 cheeses
 
+test.database.url=jdbc:mysql//127.0.0.1:3325/schema?options
 
 spaces only
 multi  spaces
