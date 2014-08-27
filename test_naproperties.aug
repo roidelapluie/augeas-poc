@@ -34,14 +34,10 @@ spaces only
 multi  spaces
   indented spaces
 
-\= =A
 space and = equals
 space with \
    multiline
 
-escaped\:colon=value
-escaped\=equals=value
-escaped\ space=value
 "
 
 (* Other tests that aren't supported yet
@@ -93,16 +89,12 @@ test lns get conf =
     { "multi" = "spaces" }
     { "indented" = "spaces" }
     {}
-    { "\\=" = "A" }
     { "space" = "and = equals" }
     { "space" = " < multi > "
         { = "with " }
         { = "multiline" }
     }
     {}
-    { "escaped\:colon" = "value" }
-    { "escaped\=equals" = "value" }
-    { "escaped\ space" = "value" }
 test lns put conf after
     set "tomcat.port" "99";
     set "tomcat.application.host" "foo.network.com"
@@ -141,14 +133,10 @@ spaces only
 multi  spaces
   indented spaces
 
-\= =A
 space and = equals
 space with \
    multiline
 
-escaped\:colon=value
-escaped\=equals=value
-escaped\ space=value
 tomcat.application.host=foo.network.com
 "
 
