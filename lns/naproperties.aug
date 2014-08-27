@@ -27,7 +27,7 @@ module NaProperties =
   let backslash        = del /[\\][ \t]*\n/ "\\\n"
   let opt_backslash    = del /([\\][ \t]*\n)?/ ""
   let database_entry   = /[A-Za-z0-9\._]+\.database\.url/
-  let entry            = /[A-Za-z0-9\._]+/ - /\.database\.url/
+  let entry            = /[A-Za-z0-9\._]+/ - /.*\.database\.url/
 
   let multi_line_entry =
       [ indent . value_to_bs? . backslash ] .
@@ -43,9 +43,10 @@ module NaProperties =
   let bang_comment     = [ label "!comment" . del /[ \t]*![ \t]*/ "! " . store /([^ \t\n].*[^ \t\n]|[^ \t\n])/ . eol ]
   let comment          = ( Util.comment | bang_comment )
   let property         = [ indent . key entry . sepch . ( multi_line_entry | indent . value_to_eol . eol ) ]
+  let database_property         = [ indent . key database_entry . sepch . ( multi_line_entry | indent . value_to_eol . eol ) ]
   let property_ws         = [ indent . key entry . sepch_ns . ( multi_line_entry_ws | indent . value_to_eol_ws . eol ) ]
   let empty_property   = [ indent . key entry . sepch_opt . hard_eol ]
   let empty_key        = [ sepch_ns . ( multi_line_entry | indent . value_to_eol . eol ) ]
 
   (* setup our lens and filter*)
-  let lns              = ( empty | comment | property_ws | property | empty_property | empty_key ) *
+  let lns              = ( empty | comment | property_ws | property | database_property | empty_property | empty_key ) *
