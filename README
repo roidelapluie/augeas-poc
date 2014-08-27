@@ -1,0 +1,1 @@
+augparse -I lns/ test_naproperties.aug
